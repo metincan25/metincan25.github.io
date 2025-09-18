@@ -1,0 +1,34 @@
+<h3 class="m-0 page-title mb-4">Yeni Ödeme Fişi</h3>
+
+<form id="new-payment-slip-form" class="card shadow-sm card-body" style="max-width: 700px;" novalidate>
+    
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label for="cash-bank-account-select" class="form-label">Hesap <span class="text-danger">*</span></label>
+            <select id="cash-bank-account-select" class="form-select" required>
+                <option value="" disabled selected>Yükleniyor...</option>
+            </select>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label for="transaction-date" class="form-label">Tarih <span class="text-danger">*</span></label>
+            <input type="date" id="transaction-date" class="form-control" required>
+        </div>
+    </div>
+
+    <div class="mb-3 position-relative">
+        <label for="invoice-search" class="form-label">Ödemesi Yapılacak Fatura <span class="text-danger">*</span></label>
+        <input type="text" id="invoice-search" class="form-control" placeholder="Tedarikçi adı veya Fatura No ile ara..." required autocomplete="off">
+        <div id="invoice-search-results" class="list-group position-absolute w-100" style="z-index: 1000; display: none;"></div>
+        <div class="form-text">Seçilen Fatura Tutarı: <strong id="selected-invoice-amount">0.00 ₺</strong></div>
+    </div>
+    
+    <div class="mb-3">
+        <label for="transaction-description" class="form-label">Açıklama</label>
+        <textarea id="transaction-description" class="form-control" rows="3" placeholder="Örn: Fatura ödemesi, Avans..."></textarea>
+    </div>
+    <div class="d-flex justify-content-end">
+        <button type="submit" class="btn btn-danger">
+            <i class="fas fa-minus me-2"></i>Ödemeyi Kaydet
+        </button>
+    </div>
+</form>

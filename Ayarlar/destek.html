@@ -1,0 +1,22 @@
+<h3 class="m-0 page-title mb-4">Yardım & Destek Talebi</h3>
+<p class="text-muted">Karşılaştığınız bir sorunu veya bulduğunuz bir hatayı bize bildirmek için aşağıdaki formu kullanabilirsiniz.</p>
+
+<form id="support-ticket-form" class="card shadow-sm card-body" style="max-width: 800px;">
+    <div class="mb-3">
+        <label for="ticket-subject" class="form-label">Konu Başlığı *</label>
+        <input type="text" id="ticket-subject" class="form-control" placeholder="Örn: Raporlar sayfasında hata alıyorum" required>
+    </div>
+    <div class="mb-3">
+        <label for="ticket-body" class="form-label">Sorunun Detayları *</label>
+        <textarea id="ticket-body" class="form-control" rows="8" placeholder="Lütfen karşılaştığınız sorunu, hangi adımları izlediğinizi ve beklentinizi detaylı bir şekilde açıklayın." required></textarea>
+    </div>
+    <div class="mb-3">
+        <label for="ticket-attachment" class="form-label">Ekran Görüntüsü (Varsa)</label>
+        <input type="file" id="ticket-attachment" class="form-control" accept="image/png, image/jpeg">
+    </div>
+    <div class="d-flex justify-content-end">
+        <button type="submit" class="btn btn-primary">
+            <i class="fas fa-paper-plane me-2"></i>Destek Talebini Gönder
+        </button>
+    </div>
+</form>

@@ -1,0 +1,33 @@
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h3 class="m-0 page-title">Satış Siparişleri Listesi</h3>
+    </div>
+
+<div class="table-responsive shadow-sm rounded">
+    <table class="table table-hover align-middle mb-0">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col" style="width: 20%;">Sipariş No</th>
+                <th scope="col" style="width: 20%;">Tarih ve Saat</th>
+                <th scope="col" style="width: 25%;">Müşteri</th>
+                <th scope="col" class="text-end" style="width: 15%;">Tutar</th>
+                <th scope="col" class="text-center" style="width: 10%;">Durum</th>
+                <th scope="col" class="text-center" style="width: 10%;">İşlemler</th>
+            </tr>
+            <tr class="table-light">
+                <td><input type="text" class="form-control form-control-sm filter-input" data-filterkey="orderNumber" placeholder="Sipariş No Ara..."></td>
+                <td><input type="date" class="form-control form-control-sm filter-input" data-filterkey="startDate"></td>
+                <td><input type="text" class="form-control form-control-sm filter-input" data-filterkey="customerName" placeholder="Müşteri Adı Ara..."></td>
+                <td></td> <td>
+                    <select class="form-select form-select-sm filter-input" data-filterkey="status">
+                        <option value="">Tümü</option>
+                        <option value="Hazırlanıyor">Hazırlanıyor</option>
+                        <option value="Sevk Edildi">Sevk Edildi</option>
+                        <option value="İptal Edildi">İptal Edildi</option>
+                    </select>
+                </td>
+                <td></td> </tr>
+        </thead>
+        <tbody id="sales-orders-table-body">
+            </tbody>
+    </table>
+</div>

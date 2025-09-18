@@ -1,0 +1,113 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(-45deg, #9c27b0, #e91e63, #9c27b0, #e91e63);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.login-container {
+    background-color: rgb(1, 1, 20);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    max-width: 550px;
+    width: 100%;
+    margin: auto;
+    transition: all 0.3s ease;
+}
+
+.login-container:hover {
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+.logo-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo {
+    max-width: 190px;
+    margin-bottom: 15px;
+}
+
+.welcome-text {
+    font-weight: 700;
+    color: whitesmoke;
+    margin-bottom: 25px;
+    font-size: 1.5rem;
+}
+
+.form-control {
+    border-radius: 8px;
+    padding: 15px 20px;
+    border: 1px solid #ddd;
+    margin-bottom: 15px;
+    height: 50px;
+    font-size: 1.1rem;
+}
+
+.form-label {
+    color: white !important;
+    font-weight: 500;
+}
+
+.form-control:focus {
+    border-color: #23a6d5;
+    box-shadow: 0 0 0 0.25rem rgba(35, 166, 213, 0.25);
+}
+
+.btn-login {
+    background: linear-gradient(to right, #23a6d5, #23d5ab);
+    border: none;
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 500;
+    width: 100%;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-login:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(35, 166, 213, 0.4);
+}
+
+/* Diğer tüm CSS kurallarınız buraya gelecek... */
+
+.forgot-password {
+    text-align: right;
+    margin-top: -10px;
+    margin-bottom: 20px;
+}
+
+.forgot-password a {
+    color: #ffffff !important;
+    text-decoration: underline;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.input-group-text {
+    background-color: #f8f9fa;
+    border-radius: 8px 0 0 8px !important;
+    height: 50px;
+    padding: 0 20px;
+}
