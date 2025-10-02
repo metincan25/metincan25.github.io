@@ -1,0 +1,18 @@
+config.js
+
+# Bağımlılıklar klasörü (npm veya yarn ile indirilir)
+node_modules/
+
+# Visual Studio ve .NET derleme artıkları
+bin/
+obj/
+
+# Rider IDE dosyaları
+.idea/
+
+# VS Code dosyaları
+.vscode/
+
+# Kullanıcıya özel ayarlar
+*.user
+*.suo
