@@ -1,8 +1,6 @@
 # Inventra - Modern Mini ERP Çözümü
 
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/username/repo/path/to/your/logo.png" alt="Inventra Logo" width="200"/>
-</p>
+
 
 <p align="center">
   <strong>İşinizi Kolaylaştıran Akıllı Çözümler</strong>
