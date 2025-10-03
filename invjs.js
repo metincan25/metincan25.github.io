@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log("Login script'i başarıyla yüklendi.");
-    
+    const API_BASE_URL = 'https://localhost:7038';
     // Sadece login formu olan sayfalarda çalış
     const loginForm = document.getElementById('login-form');
     if (!loginForm) {
