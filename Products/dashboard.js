@@ -2393,35 +2393,43 @@ function initializeNewPurchaseOrderPage(container) {
     const form = container.querySelector('#new-purchase-order-form');
     const supplierSearchInput = container.querySelector('#supplier-search');
     const supplierSearchResults = container.querySelector('#supplier-search-results');
-    const orderNotesInput = container.querySelector('#purchase-order-notes');
+    const orderNotesInput = container.querySelector('#order-notes'); // ID düzeltildi
     const productSearchInput = container.querySelector('#product-search');
     const productSearchResults = container.querySelector('#product-search-results');
     const productQuantityInput = container.querySelector('#product-quantity');
-    const addItemBtn = container.querySelector('#add-to-cart-btn'); // ID düzeltildi
-    const orderItemsBody = container.querySelector('#shopping-cart-body'); // ID düzeltildi
+    const productPriceInput = container.querySelector('#product-price'); // Eksik tanım eklendi
+    const addItemBtn = container.querySelector('#add-item-btn'); // ID düzeltildi
+    const orderItemsBody = container.querySelector('#order-items-body'); // ID düzeltildi
 
     let shoppingCart = [];
     let selectedSupplierId = null;
     let selectedProduct = null;
     let debounceTimer;
 
-
-
-    
     function renderShoppingCart() {
         if (shoppingCart.length === 0) {
-            orderItemsBody.innerHTML = `<tr><td colspan="4" class="text-center text-muted p-3">Sipariş sepeti boş.</td></tr>`;
+            orderItemsBody.innerHTML = `<tr><td colspan="5" class="text-center text-muted p-3">Sipariş sepeti boş.</td></tr>`;
             return;
         }
-        orderItemsBody.innerHTML = shoppingCart.map((item, index) => `
+        
+        let total = 0;
+        orderItemsBody.innerHTML = shoppingCart.map((item, index) => {
+            const itemTotal = item.quantity * item.purchasePrice;
+            total += itemTotal;
+            return `
             <tr>
                 <td>${item.productName} (${item.sku})</td>
                 <td>${item.quantity}</td>
                 <td class="text-end">${item.purchasePrice.toFixed(2)} ₺</td>
+                <td class="text-end">${itemTotal.toFixed(2)} ₺</td>
                 <td class="text-center">
                     <button type="button" class="btn btn-sm btn-outline-danger remove-item-btn" data-index="${index}"><i class="fas fa-times"></i></button>
                 </td>
-            </tr>`).join('');
+            </tr>`;
+        }).join('');
+        
+        // Toplam tutarı güncelle
+        document.getElementById('order-total').textContent = total.toFixed(2) + ' ₺';
     }
 
     function resetProductEntry() {
@@ -2432,86 +2440,123 @@ function initializeNewPurchaseOrderPage(container) {
         productSearchInput.focus();
     }
 
- 
+    // ELEMENT KONTROLLERİ - NULL CHECK EKLENDİ
+    if (!supplierSearchInput) {
+        console.error('supplierSearchInput bulunamadı');
+        return;
+    }
+    if (!productSearchInput) {
+        console.error('productSearchInput bulunamadı');
+        return;
+    }
+    if (!addItemBtn) {
+        console.error('addItemBtn bulunamadı');
+        return;
+    }
+    if (!orderItemsBody) {
+        console.error('orderItemsBody bulunamadı');
+        return;
+    }
+    if (!form) {
+        console.error('form bulunamadı');
+        return;
+    }
 
-     supplierSearchInput.addEventListener('keyup', (e) => {
+    supplierSearchInput.addEventListener('keyup', (e) => {
         clearTimeout(debounceTimer);
         const searchTerm = e.target.value;
-        if (searchTerm.length < 2) { supplierSearchResults.style.display = 'none'; return; }
+        if (searchTerm.length < 2) { 
+            if(supplierSearchResults) supplierSearchResults.style.display = 'none'; 
+            return; 
+        }
         
         debounceTimer = setTimeout(async () => {
             try {
-                
                 const response = await fetch(`${API_BASE_URL}/api/cariler?search=${searchTerm}&type=Tedarikçi`, { headers: { 'Authorization': `Bearer ${token}` } });
                 const cariler = await response.json();
-                supplierSearchResults.innerHTML = cariler && cariler.length > 0
-                    ? cariler.map(c => `<a href="#" class="list-group-item list-group-item-action" data-cari-id="${c.id}" data-cari-unvan="${c.unvan}">${c.unvan} (${c.cariKodu})</a>`).join('')
-                    : '<span class="list-group-item disabled">Sonuç bulunamadı</span>';
-                supplierSearchResults.style.display = 'block';
+                if (supplierSearchResults) {
+                    supplierSearchResults.innerHTML = cariler && cariler.length > 0
+                        ? cariler.map(c => `<a href="#" class="list-group-item list-group-item-action" data-cari-id="${c.id}" data-cari-unvan="${c.unvan}">${c.unvan} (${c.cariKodu})</a>`).join('')
+                        : '<span class="list-group-item disabled">Sonuç bulunamadı</span>';
+                    supplierSearchResults.style.display = 'block';
+                }
             } catch (error) { console.error("Tedarikçi araması hatası:", error); }
         }, 300);
     });
-    supplierSearchResults.addEventListener('click', (e) => {
-        e.preventDefault();
-        const target = e.target.closest('a');
-        if (target) {
-            selectedSupplierId = parseInt(target.dataset.cariId);
-            supplierSearchInput.value = target.dataset.cariUnvan;
-            supplierSearchResults.style.display = 'none';
-        }
-    });
+
+    if (supplierSearchResults) {
+        supplierSearchResults.addEventListener('click', (e) => {
+            e.preventDefault();
+            const target = e.target.closest('a');
+            if (target) {
+                selectedSupplierId = parseInt(target.dataset.cariId);
+                supplierSearchInput.value = target.dataset.cariUnvan;
+                supplierSearchResults.style.display = 'none';
+            }
+        });
+    }
 
     productSearchInput.addEventListener('keyup', (e) => {
         clearTimeout(debounceTimer);
         const searchTerm = e.target.value;
-        if (searchTerm.length < 2) { if(productSearchResults) productSearchResults.style.display = 'none'; return; }
+        if (searchTerm.length < 2) { 
+            if(productSearchResults) productSearchResults.style.display = 'none'; 
+            return; 
+        }
         debounceTimer = setTimeout(async () => {
             try {
                 const response = await fetch(`${API_BASE_URL}/api/products?search=${searchTerm}&pageSize=5`, { headers: { 'Authorization': `Bearer ${token}` } });
                 const result = await response.json();
-                if (result.items && result.items.length > 0) {
-                    productSearchResults.innerHTML = result.items.map(p => 
-                        `<a href="#" class="list-group-item list-group-item-action py-2" data-product='${JSON.stringify(p)}'>
-                            <div><strong>${p.name}</strong></div><small class="text-muted">SKU: ${p.sku}</small>
-                        </a>`
-                    ).join('');
-                } else {
-                    productSearchResults.innerHTML = '<span class="list-group-item disabled">Sonuç bulunamadı</span>';
+                if (productSearchResults) {
+                    if (result.items && result.items.length > 0) {
+                        productSearchResults.innerHTML = result.items.map(p => 
+                            `<a href="#" class="list-group-item list-group-item-action py-2" data-product='${JSON.stringify(p)}'>
+                                <div><strong>${p.name}</strong></div><small class="text-muted">SKU: ${p.sku}</small>
+                            </a>`
+                        ).join('');
+                    } else {
+                        productSearchResults.innerHTML = '<span class="list-group-item disabled">Sonuç bulunamadı</span>';
+                    }
+                    productSearchResults.style.display = 'block';
                 }
-                productSearchResults.style.display = 'block';
             } catch (error) { console.error("Ürün araması hatası:", error); }
         }, 300);
     });
 
-     productSearchResults.addEventListener('click', (e) => {
-        e.preventDefault();
-        const target = e.target.closest('a');
-        if (target) {
-            selectedProduct = JSON.parse(target.dataset.product);
-            productSearchInput.value = `${selectedProduct.name} (${selectedProduct.sku})`;
-            productSearchResults.style.display = 'none';
-            productQuantityInput.focus();
-        }
-    });
+    if (productSearchResults) {
+        productSearchResults.addEventListener('click', (e) => {
+            e.preventDefault();
+            const target = e.target.closest('a');
+            if (target) {
+                selectedProduct = JSON.parse(target.dataset.product);
+                productSearchInput.value = `${selectedProduct.name} (${selectedProduct.sku})`;
+                productSearchResults.style.display = 'none';
+                if (productPriceInput) {
+                    productPriceInput.value = (selectedProduct.purchasePrice || 0).toFixed(2);
+                }
+                productQuantityInput.focus();
+            }
+        });
+    }
     
     addItemBtn.addEventListener('click', () => {
-     const quantity = parseInt(productQuantityInput.value);
-     if (!selectedProduct || !quantity || quantity <= 0) {
-        alert("Lütfen arama yaparak bir ürün seçin ve geçerli bir miktar girin.");
-        return;
-     }
-     const unitPrice = selectedProduct.salePrice || 0;
-     shoppingCart.push({
-        productId: selectedProduct.id,
-        productName: selectedProduct.name,
-        sku: selectedProduct.sku,
-        quantity: quantity,
-        purchasePrice: selectedProduct.purchasePrice || 0, 
-        unitPrice : unitPrice
-    });
-    
-    renderShoppingCart();
-    resetProductEntry();
+        const quantity = parseInt(productQuantityInput.value);
+        if (!selectedProduct || !quantity || quantity <= 0) {
+            alert("Lütfen arama yaparak bir ürün seçin ve geçerli bir miktar girin.");
+            return;
+        }
+        const unitPrice = selectedProduct.purchasePrice || 0;
+        shoppingCart.push({
+            productId: selectedProduct.id,
+            productName: selectedProduct.name,
+            sku: selectedProduct.sku,
+            quantity: quantity,
+            purchasePrice: unitPrice,
+            unitPrice: unitPrice
+        });
+        
+        renderShoppingCart();
+        resetProductEntry();
     });
 
     orderItemsBody.addEventListener('click', (e) => {
@@ -2528,7 +2573,7 @@ function initializeNewPurchaseOrderPage(container) {
         if (shoppingCart.length === 0) { alert("Lütfen siparişe en az bir ürün ekleyin."); return; }
         const orderData = {
             cariId: selectedSupplierId,
-            notes: orderNotesInput.value,
+            notes: orderNotesInput ? orderNotesInput.value : '',
             items: shoppingCart.map(item => ({
                 productId: item.productId,
                 quantity: item.quantity,
@@ -2544,10 +2589,15 @@ function initializeNewPurchaseOrderPage(container) {
             const result = await response.json();
             if (!response.ok) throw new Error(result.message || "Satın alma siparişi oluşturulamadı.");
             
-            window.showSuccessModal(`'${result.purchaseOrderNumber}' numaralı siparişiniz başarıyla oluşturuldu.`);
+            if (window.showSuccessModal) {
+                window.showSuccessModal(`'${result.purchaseOrderNumber}' numaralı siparişiniz başarıyla oluşturuldu.`);
+            } else {
+                alert(`'${result.purchaseOrderNumber}' numaralı siparişiniz başarıyla oluşturuldu.`);
+            }
             shoppingCart = [];
             renderShoppingCart();
             form.reset();
+            selectedSupplierId = null;
         } catch (error) { alert(`Hata: ${error.message}`); }
     });
 
