@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <script src="auth-guard.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventra - Yönetim Paneli</title>
+    <link rel="shortcut icon" type="image/x-icon" href="177f25bb007dc020f07d33cefb4a63ad.ico"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="anasayfa.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<div class="d-flex" id="wrapper">
+
+    <div class="sidebar-container" id="sidebar-wrapper">
+        <div class="sidebar-logo">
+            <img src="177f25bb007dc020f07d33cefb4a63ad.png" alt="Inventra Logo">
+        </div>
+
+        <div class="sidebar-user">
+            <div class="user-avatar"></div>
+            <div class="user-info">
+                <span class="user-name"></span>
+                
+            </div>
+        </div>
+        
+        <div class="list-group list-group-flush sidebar-menu">
+            <a href="#submenu-products" data-bs-toggle="collapse" class="list-group-item list-group-item-action">
+             <i class="fas fa-box fa-fw me-3"></i><span>Ürünler</span>
+           </a>
+             <div class="collapse" id="submenu-products">
+               <a href="#" class="list-group-item sub-item" data-page="Products/urun-listesi.html" data-title="Ürün Listesi">
+                  <i class="fas fa-list-ul fa-fw me-2"></i> Ürün Listesi
+               </a>
+               <a href="#" class="list-group-item sub-item" data-page="Products/yeni-urun.html" data-title="Yeni Ürün Ekle">
+                    <i class="fas fa-plus-circle fa-fw me-2"></i> Yeni Ürün Ekle
+               </a>
+               <a href="#" class="list-group-item sub-item" data-page="Products/kategoriler.html" data-title="Kategori Yönetimi">
+                    <i class="fa-solid fa-table-list fa-fw me-2"></i> Kategoriler
+               </a>
+               <a href="#" class="list-group-item sub-item" data-page="Products/markalar.html" data-title="Marka Yönetimi">
+                    <i class="fa-regular fa-copyright fa-fw me-2"></i> Markalar
+               </a>
+               <a href="#" class="list-group-item sub-item" data-page="Products/birimler.html" data-title="Birim Yönetimi">
+                    <i class="fa-solid fa-weight-scale fa-fw me-2"></i> Birimler
+               </a>
+               <a href="#" class="list-group-item sub-item" data-page="Products/fiyat-listeleri.html" data-title="Fiyat Listeleri">
+                    <i class="fa-solid fa-money-bill-wave fa-fw me-2"></i> Fiyat Listeleri
+               </a>
+        </div>
+        <a href="#submenu-orders" data-bs-toggle="collapse" class="list-group-item list-group-item-action">
+            <i class="fas fa-dolly-flatbed fa-fw me-3"></i><span>Siparişler</span>
+        </a>
+        <div class="collapse" id="submenu-orders">
+          <a href="#" class="list-group-item list-group-item-action sub-item-header">SATIŞ SÜREÇLERİ</a>
+          <a href="#" class="list-group-item list-group-item-action sub-item" data-page="Orders/yeni-satis-siparisi.html" data-title="Yeni Satış Siparişi">
+              <i class="fa-solid fa-cart-plus fa-fw me-2"></i> Yeni Satış Siparişi
+          </a>
+          <a href="#" class="list-group-item list-group-item-action sub-item" 
+             data-page="Orders/satis-siparisleri.html" 
+             data-title="Satış Siparişleri Listesi">
+             <i class="fa-solid fa-list-ul fa-fw me-2"></i>Satış Siparişleri Listesi
+          </a>
+          <a href="#" class="list-group-item list-group-item-action sub-item" 
+             data-page="Orders/satis-irsaliyeleri.html" 
+             data-title="Satış İrsaliyeleri">
+              <i class="fa-solid fa-receipt fa-fw me-2"></i>Satış İrsaliyeleri
+          </a>
+          <a href="#" class="list-group-item list-group-item-action sub-item" 
+             data-page="Orders/satis-faturalari.html" 
+             data-title="Satış Faturaları">
+              <i class="fa-solid fa-file-invoice-dollar fa-fw me-2"></i>Satış Faturaları
+          </a>
+          <a href="#" class="list-group-item list-group-item-action sub-item-header mt-2">SATIN ALMA SÜREÇLERİ</a>
+          <a href="#" class="list-group-item list-group-item-action sub-item" 
+              data-page="Orders/yeni-satin-alma.html" 
+              data-title="Yeni Satın Alma Siparişi">
+              <i class="fa-solid fa-cart-shopping fa-fw me-2"></i>Yeni Satın Alma Siparişi
+          </a>
+          <a href="#" class="list-group-item list-group-item-action sub-item" 
+             data-page="Orders/satin-alma-siparisleri.html" 
+             data-title="Satın Alma Sipariş Listesi">
+             <i class="fa-solid fa-list-ul fa-fw me-2"></i>Satın Alma Sipariş Listesi
+          </a>
+          <a href="#" class="list-group-item list-group-item-action sub-item" 
+             data-page="Orders/alis-irsaliyeleri.html" 
+             data-title="Alış İrsaliyeleri">
+             <i class="fa-solid fa-receipt fa-fw me-2"></i>Alış İrsalyeleri
+          </a>
+          <a href="#" class="list-group-item list-group-item-action sub-item" 
+             data-page="Orders/alis-faturalari.html" 
+             data-title="Alış Faturaları">
+             <i class="fa-solid fa-file-invoice-dollar fa-fw me-2"></i>Alış Faturaları
+          </a>
+        </div>
+        <div>
+           <a href="#submenu-cariler" data-bs-toggle="collapse" class="list-group-item list-group-item-action">
+               <i class="fas fa-users fa-fw me-3"></i><span>Cariler</span>
+           </a>
+           <div class="collapse" id="submenu-cariler">
+              <a href="#" class="list-group-item list-group-item-action sub-item" data-page="Cariler/cari-listesi.html" data-title="Cari Listesi">
+                   <i class="fa-solid fa-users fa-fw me-2"></i>Cari Listesi
+              </a>
+              <a href="#" class="list-group-item list-group-item-action sub-item" 
+              data-page="Cariler/yeni-cari.html" 
+              data-title="Yeni Cari Ekle"><i class="fa-solid fa-user-plus fa-fw me-2"></i>Yeni Cari Ekle</a>
+              <a href="#" class="list-group-item list-group-item-action sub-item" 
+              data-page="Cariler/cari-hareketleri.html" 
+              data-title="Cari Hareketleri">
+              <i class="fas fa-exchange-alt fa-fw me-2"></i>Cari Hareketleri (Ekstre)
+              </a>
+              <a href="#" class="list-group-item list-group-item-action sub-item" 
+              data-page="Cariler/yeni-tahsilat.html" 
+              data-title="Yeni Tahsilat Fişi">
+              <i class="fas fa-hand-holding-usd fa-fw me-2"></i>Yeni Tahsilat Fişi
+              </a>
+              <a href="#" class="list-group-item list-group-item-action sub-item" 
+              data-page="Cariler/yeni-odeme.html" 
+              data-title="Yeni Ödeme Fişi">
+              <i class="fas fa-money-bill-wave fa-fw me-2"></i>Yeni Ödeme Fişi
+              </a>
+              <a href="#" class="list-group-item list-group-item-action sub-item" 
+              data-page="Cariler/borc-alacak-raporu.html" 
+              data-title="Borç-Alacak Raporu">
+              <i class="fas fa-chart-pie fa-fw me-2"></i>Borç-Alacak Raporu
+              </a>
+            </div>  
+        </div>
+        
+        
+        
+
+            
+         <a href="#submenu-uretim" data-bs-toggle="collapse" class="list-group-item list-group-item-action">
+            <i class="fas fa-cogs fa-fw me-3"></i><span>Üretim</span>
+        </a>
+        <div class="collapse" id="submenu-uretim">
+            <a href="#" class="list-group-item list-group-item-action sub-item" 
+              data-page="Uretim/uretim.html" 
+              data-title="ÇOK YAKINDA">
+             <i class="fas fa-cogs fa-fw me-2"></i>Üretim
+           </a>
+        </div>
+        
+
+
+        <a href="#submenu-warehouse" data-bs-toggle="collapse" class="list-group-item list-group-item-action">
+          <i class="fas fa-warehouse fa-fw me-3"></i><span>Depo</span>
+        </a>
+        <div class="collapse" id="submenu-warehouse">
+           <a href="#" class="list-group-item list-group-item-action sub-item" 
+              data-page="Depo/stok-durum-raporu.html" 
+              data-title="Stok Durum Raporu">
+             <i class="fas fa-chart-bar fa-fw me-2"></i>Stok Durum Raporu
+           </a>
+           <a href="#" class="list-group-item list-group-item-action sub-item" 
+              data-page="Depo/stok-hareketleri.html" 
+              data-title="Stok Hareketleri">
+             <i class="fas fa-history fa-fw me-2"></i>Stok Hareketleri
+           </a>
+           <a href="#" class="list-group-item list-group-item-action sub-item" 
+              data-page="Depo/mal-kabul.html" 
+              data-title="Mal Kabul">
+             <i class="fas fa-box-open fa-fw me-2"></i>Mal Kabul
+           </a>
+           
+        </div>
+        <div>
+            <a href="#submenu-reports" data-bs-toggle="collapse" class="list-group-item list-group-item-action">
+              <i class="fas fa-chart-pie fa-fw me-3"></i><span>Raporlar</span>
+            </a>
+            <div class="collapse" id="submenu-reports">
+              <a href="#" class="list-group-item list-group-item-action sub-item" 
+                  data-page="Raporlar/aylik-ciro-raporu.html" 
+                  data-title="Aylık Ciro Raporu"><i class="fa-solid fa-calendar-days fa-fw me-2"></i>Aylık Ciro Raporu</a>
+            </div>
+            <div class="collapse" id="submenu-reports">
+              <a href="#" class="list-group-item list-group-item-action sub-item" 
+               data-page="Raporlar/urun-satis-raporu.html" 
+                data-title="Ürün Satış Raporu"><i class="fa-solid fa-money-check-dollar fa-fw me-2"></i>Ürün Satış Raporu</a>
+           </div>
+           <div class="collapse" id="submenu-reports">
+              <a href="#" class="list-group-item list-group-item-action sub-item" 
+              data-page="Raporlar/tahsilat-odeme-raporu.html" 
+              data-title="Tahsilat & Ödeme Raporu"><i class="fa-solid fa-money-check fa-fw me-2"></i>Tahsilat & Ödeme Raporu</a>
+           </div>
+           <div class="collapse" id="submenu-reports">
+              <a href="#" class="list-group-item list-group-item-action sub-item" 
+              data-page="Raporlar/musteri-satis-raporu.html" 
+              data-title="Müşteri Satış Raporu"><i class="fa-solid fa-users fa-fw me-2"></i>Müşteri Satış Raporu</a>
+           </div>
+           <div class="collapse" id="submenu-reports">
+                <a href="#" class="list-group-item list-group-item-action sub-item" 
+                 data-page="Raporlar/karlilik-raporu.html" 
+                  data-title="Ürün Kârlılık Raporu"><i class="fa-solid fa-money-bill-1 fa-fw me-2"></i>Ürün Kârlılık Raporu</a>
+           </div>
+        
+        </div>
+        <a href="#submenu-activities" data-bs-toggle="collapse" class="list-group-item list-group-item-action">
+           <i class="fas fa-history fa-fw me-3"></i><span>Hareketler</span>
+        </a>
+        <div class="collapse" id="submenu-activities">
+           <a href="#" class="list-group-item list-group-item-action sub-item" 
+              data-page="Hareketler/cari-hareketleri2.html" 
+               data-title="Cari Hareketleri"><i class="fa-solid fa-users fa-fw me-2"></i>Cari Hareketleri</a>
+        </div>
+        <div class="collapse" id="submenu-activities">
+            <a href="#" class="list-group-item list-group-item-action sub-item"
+                data-page="Depo/stok-hareketleri.html"
+                data-title="Stok Hareketleri"><i class="fas fa-list-ul fa-fw me-2"></i>Stok Hareketleri</a>
+            <a href="#" class="list-group-item list-group-item-action sub-item" 
+               data-page="Hareketler/siparis-hareketleri.html" 
+               data-title="Sipariş Hareketleri"><i class="fa-solid fa-list-check fa-fw me-2"></i>Sipariş Hareketleri</a>
+            <a href="#" class="list-group-item list-group-item-action sub-item admin-only" 
+               data-page="IslemGecmisi/islem-kayitlari.html" 
+               data-title="İşlem Kayıtları">İşlem Kayıtları</a>
+        </div>
+        
+        
+        <a href="#submenu-cashbank" data-bs-toggle="collapse" class="list-group-item list-group-item-action">
+          <i class="fas fa-cash-register fa-fw me-3"></i><span>Kasa & Banka</span>
+        </a>
+        <div class="collapse" id="submenu-cashbank">
+          <a href="#" class="list-group-item list-group-item-action sub-item" 
+             data-page="KasaBanka/kasa-banka-tanimlari.html" 
+              data-title="Kasa ve Banka Tanımları"><i class="fa-solid fa-building-columns fa-fw me-2"></i>Kasa ve Banka Tanımları</a>
+          <a href="#" class="list-group-item list-group-item-action sub-item" 
+             data-page="KasaBanka/kasa-hareketleri.html" 
+             data-title="Kasa Hareketleri"><i class="fa-solid fa-money-check-dollar fa-fw me-2"></i>Kasa Hareketleri</a>
+          <a href="#" class="list-group-item list-group-item-action sub-item" 
+              data-page="KasaBanka/hesaplar-arasi-virman.html" 
+              data-title="Hesaplar Arası Virman"><i class="fa-solid fa-vault fa-fw me-2"></i>Hesaplar Arası Virman</a>
+        </div>
+
+        <a href="#submenu-settings" data-bs-toggle="collapse" class="list-group-item list-group-item-action">
+           <i class="fas fa-cog fa-fw me-3"></i><span>Ayarlar & Yardım</span>
+        </a>
+        <div class="collapse" id="submenu-settings">
+           <a href="#" class="list-group-item list-group-item-action sub-item" 
+             data-page="Ayarlar/ayarlar.html" 
+             data-title="Ayarlar">Ayarlar</a>
+            <a href="#" class="list-group-item list-group-item-action sub-item"
+             data-page="Ayarlar/destek.html"
+             data-title="Yardım&Destek">Yardım&Destek</a>
+        </div>
+        
+           
+        </div>
+
+        <div class="sidebar-footer">
+            ©2025 Metin Can Gül
+        </div>
+    </div> <div id="page-content-wrapper">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+            <div class="container-fluid">
+                <button class="btn btn-primary" id="menu-toggle"><i class="fas fa-bars"></i></button>
+                
+               <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                  <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          <i class="fas fa-user fa-fw"></i>
+                         <span id="navbar-username">Kullanıcı</span>
+                      </a>
+                      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                          <li>
+                             <a class="dropdown-item sub-item" href="#" 
+                              data-page="Profil/profilim.html" 
+                              data-title="Profilim">
+                              Profil
+                             </a>
+                         </li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#" id="logout-button">Çıkış Yap</a></li>
+                      </ul>
+                   </li>
+               </ul>
+            </div>
+        </nav> <div class="container-fluid">
+            <ul class="nav nav-tabs" id="tab-navigation">
+                <li class="nav-item">
+                    <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-ozet" type="button" role="tab">
+                        <i class="fas fa-home me-1"></i> Ana Sayfa
+                    </button>
+                </li>
+            </ul>
+
+            <div class="tab-content" id="tab-content">
+                <div class="tab-pane fade show active" id="tab-ozet" role="tabpanel">
+                      <div class="animated-background"></div>
+
+<div class="container-fluid p-4" style="position: relative; z-index: 2;">
+    
+    <div class="row align-items-center mb-4 welcome-panel">
+        <div class="col-md-8">
+            <h2 class="h4 mb-1 text-white">Hoş Geldin, <span id="welcome-username" class="fw-bold">...</span>!</h2>
+            <p class="mb-0 text-white-50">Inventra ile işlerinizi kolayca yönetmeye hazırsınız.</p>
+        </div>
+        <div class="col-md-4 text-md-end">
+            <h5 class="fw-normal mb-0 text-white"><i class="far fa-calendar-alt me-2"></i> <span id="live-date"></span></h5>
+            <h6 class="fw-light text-white-50 mb-0"><i class="far fa-clock me-2"></i> <span id="live-clock"></span></h6>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="shortcut-card h-100" data-page="Orders/yeni-satis-siparisi.html" data-title="Yeni Satış Siparişi">
+                <div class="card-body text-center">
+                    <div class="shortcut-icon bg-primary"><i class="fas fa-cart-plus"></i></div>
+                    <h6 class="card-title mt-3">Yeni Satış Siparişi</h6>
+                    <p class="card-text small text-muted">Hızlıca yeni bir satış siparişi oluşturun.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="shortcut-card h-100" data-page="Cariler/yeni-tahsilat.html" data-title="Yeni Tahsilat Fişi">
+                <div class="card-body text-center">
+                    <div class="shortcut-icon bg-success"><i class="fas fa-hand-holding-usd"></i></div>
+                    <h6 class="card-title mt-3">Yeni Tahsilat Fişi</h6>
+                    <p class="card-text small text-muted">Müşterilerinizden ödeme alın.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="shortcut-card h-100" data-page="Products/urun-listesi.html" data-title="Ürün Listesi">
+                <div class="card-body text-center">
+                    <div class="shortcut-icon bg-info"><i class="fas fa-boxes"></i></div>
+                    <h6 class="card-title mt-3">Ürün Listesi</h6>
+                    <p class="card-text small text-muted">Stoklarınızı ve ürünlerinizi görüntüleyin.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="shortcut-card h-100" data-page="Raporlar/aylik-ciro-raporu.html" data-title="Aylık Ciro Raporu">
+                <div class="card-body text-center">
+                    <div class="shortcut-icon bg-warning"><i class="fas fa-chart-line"></i></div>
+                    <h6 class="card-title mt-3">Ciro Raporu</h6>
+                    <p class="card-text small text-muted">Finansal performansınızı analiz edin.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card about-card">
+                <div class="card-body">
+                    <h5 class="card-title">Inventra Hakkında</h5>
+                    <p class="card-text">Bu uygulama, modern web teknolojileri kullanılarak geliştirilmiş ticari amacı olmayan mini ERP çözümüdür. Siparişten stoğa, finanstan raporlamaya kadar tüm temel iş süreçlerinizi tek bir platformda birleştirir.Şuan uygulamanın demo versiyonunu kullanmaktasınız. Herhangi bir sorun veya öneri için "Ayarlar&Yardım" menüsündeki "Yardım & Destek" bölümünü kullanabilirsiniz.</p>
+                    <p class="card-text"><small class="text-muted">Versiyon 1.0.0</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                    
+
+                    </div>
+                </div>
+            </div> </div> </div> </div> 
+ <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow">
+            <div class="modal-body text-center p-4">
+                <div class="mb-3">
+                    <i class="fas fa-check-circle fa-4x text-success"></i>
+                </div>
+                <h5 class="modal-title mb-3" id="successModalLabel">İşlem Başarılı!</h5>
+                <p id="successModalBody" class="text-muted"></p>
+                <button type="button" class="btn btn-success mt-3" data-bs-dismiss="modal">Tamam</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="deleteConfirmationModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-white border-0">
+                <h5 class="modal-title" id="deleteModalLabel"><i class="fas fa-exclamation-triangle me-2"></i> Silme Onayı</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p id="deleteModalBodyText">Bu kaydı silmek istediğinize emin misiniz?</p>
+            </div>
+            <div class="modal-footer border-0">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Vazgeç</button>
+                <button type="button" class="btn btn-danger" id="confirmDeleteButton">Evet, Sil</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="priceListModal" tabindex="-1" aria-labelledby="priceListModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="priceListModalLabel">Yeni Fiyat Listesi Oluştur</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="price-list-form">
+                    <div class="mb-3">
+                        <label for="price-list-name" class="form-label">Liste Adı <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="price-list-name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="price-list-description" class="form-label">Açıklama</label>
+                        <textarea class="form-control" id="price-list-description" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Vazgeç</button>
+                <button type="button" class="btn btn-primary" id="save-price-list-button">Kaydet</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="productDetailModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Ürün Detayları</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body" id="detailModalBody">
+                </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="editFieldModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editFieldModalLabel">Değeri Düzenle</h5>
+            </div>
+            <div class="modal-body">
+                <form id="edit-field-form">
+                    <div class="mb-3">
+                        <label for="editFieldValueInput" class="form-label" id="editFieldLabel"></label>
+                        <input type="text" class="form-control" id="editFieldValueInput">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Vazgeç</button>
+                <button type="button" class="btn btn-primary" id="saveFieldButton">Kaydet</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="shipmentConfirmationModal" tabindex="-1" aria-labelledby="shipmentModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white border-0">
+                <h5 class="modal-title" id="shipmentModalLabel">
+                    <i class="fas fa-truck me-2"></i> Sipariş Sevk Onayı
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p id="shipmentModalBodyText">Bu siparişi sevk edip irsaliye oluşturmak istediğinize emin misiniz?</p>
+            </div>
+            <div class="modal-footer border-0">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Vazgeç</button>
+                <button type="button" class="btn btn-primary" id="confirmShipmentButton">Evet, Sevk Et</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="waybillDetailModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">İrsaliye Detayı</h5>
+                <div class="ms-auto d-flex gap-2">
+                    <button type="button" class="btn btn-sm btn-success" id="invoiceWaybillButton">
+                        <i class="fas fa-file-invoice-dollar me-1"></i> Faturalaştır
+                    </button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary" id="printWaybillButton">
+                        <i class="fas fa-print me-1"></i> Yazdır
+                    </button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+            </div>
+            <div class="modal-body" id="waybillModalContent">
+                </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="priceListSelectionModal" tabindex="-1" aria-labelledby="priceListSelectionModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="priceListSelectionModalLabel">Özel Fiyat Listesi Seçin</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="list-group" id="priceListModalBody">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="invoiceConfirmationModal" tabindex="-1" aria-labelledby="invoiceModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-success text-white border-0">
+                <h5 class="modal-title" id="invoiceModalLabel">
+                    <i class="fas fa-file-invoice-dollar me-2"></i> Faturalaştırma Onayı
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p id="invoiceModalBodyText">Bu irsaliyeyi faturalaştırmak istediğinize emin misiniz?</p>
+            </div>
+            <div class="modal-footer border-0">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Vazgeç</button>
+                <button type="button" class="btn btn-success" id="confirmInvoiceButton">Evet, Faturalaştır</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="statusUpdateModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Mevcut Durumu Güncelleyin</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p id="statusUpdateModalText">Siparişin yeni durumunu seçin:</p>
+                <div class="d-grid gap-2" id="statusUpdateButtons">
+                    <button class="btn btn-outline-success" data-status="Onaylandı">Onaylandı</button>
+                    <button class="btn btn-outline-danger" data-status="İptal Edildi">İptal Edildi</button>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="waybillDetailModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="waybillModalTitle">İrsaliye Detayı</h5>
+                <div class="ms-auto d-flex gap-2">
+                    <button type="button" class="btn btn-sm btn-success" id="invoiceWaybillButton">
+                        <i class="fas fa-file-invoice-dollar me-1"></i> Faturalaştır
+                    </button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary" id="printWaybillButton">
+                        <i class="fas fa-print me-1"></i> Yazdır
+                    </button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+            </div>
+            <div class="modal-body" id="waybillModalContent">
+                </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="purchaseInvoiceConfirmationModal" tabindex="-1" aria-labelledby="purchaseInvoiceModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-success text-white border-0">
+                <h5 class="modal-title" id="purchaseInvoiceModalLabel">
+                    <i class="fas fa-file-invoice-dollar me-2"></i> İrsaliyeyi Faturalaştır
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p id="purchaseInvoiceModalBodyText">Bu alış irsaliyesini faturalaştırmak istediğinize emin misiniz?</p>
+            </div>
+            <div class="modal-footer border-0">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Vazgeç</button>
+                <button type="button" class="btn btn-success" id="confirmPurchaseInvoiceButton">Evet, Faturalaştır</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="documentDetailModal" tabindex="-1" aria-labelledby="documentModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content">
+           <div class="modal-header">
+               <h5 class="modal-title" id="documentModalTitle">Belge Detayı</h5>
+               <div class="ms-auto d-flex gap-2">
+                  <div id="documentModalActionButtons"></div>
+                      <button type="button" class="btn btn-sm btn-outline-secondary" id="printDocumentButton">
+                          <i class="fas fa-print me-1"></i> Yazdır
+                      </button>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+              </div>
+             <div class="modal-body" id="documentModalContent">
+                <div class="text-center p-5">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Yükleniyor...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="genericConfirmationModal" tabindex="-1" aria-labelledby="genericModalTitle" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="genericModalTitle">İşlem Onayı</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="genericModalBody">
+                Bu işlemi gerçekleştirmek istediğinize emin misiniz?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Vazgeç</button>
+                <button type="button" class="btn btn-primary" id="genericConfirmButton">Evet, Onayla</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="Products/dashboard.js"></script>
+<script src="config.js"></script>
+
+</body>
+</html>
