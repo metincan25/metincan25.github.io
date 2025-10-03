@@ -1,0 +1,30 @@
+<h3 class="m-0 page-title mb-4">Tahsilat & Ödeme Raporu</h3>
+
+<div class="row">
+    <div class="col-lg-7">
+        <div class="card shadow-sm mb-4">
+            <div class="card-body">
+                <form id="financial-report-filter-form" class="row g-3 align-items-end">
+                    <div class="col-md-5"><label class="form-label form-label-sm">Başlangıç</label><input type="date" class="form-control form-control-sm" id="filter-start-date"></div>
+                    <div class="col-md-5"><label class="form-label form-label-sm">Bitiş</label><input type="date" class="form-control form-control-sm" id="filter-end-date"></div>
+                    <div class="col-md-2"><button type="submit" class="btn btn-primary btn-sm w-100">Getir</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-5">
+        <div class="row">
+            <div class="col-6"><div class="card card-body bg-success text-white mb-4"><div class="fw-bold">Toplam Tahsilat</div><h4 id="summary-collections">0.00 ₺</h4></div></div>
+            <div class="col-6"><div class="card card-body bg-danger text-white mb-4"><div class="fw-bold">Toplam Ödeme</div><h4 id="summary-payments">0.00 ₺</h4></div></div>
+        </div>
+    </div>
+</div>
+
+<div class="table-responsive shadow-sm rounded">
+    <table class="table table-hover align-middle mb-0">
+        <thead class="table-dark">
+            <tr><th>Tarih</th><th>İşlem Tipi</th><th>Cari</th><th>İlgili Fatura</th><th class="text-end">Tutar</th></tr>
+        </thead>
+        <tbody id="financial-report-table-body"></tbody>
+    </table>
+</div>

@@ -1,0 +1,30 @@
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h3 class="m-0 page-title">Ürün Yönetimi</h3>
+    <button class="btn btn-primary btn-sm" id="open-add-new-product-tab">
+        <i class="fas fa-plus me-1"></i>Yeni Ürün Ekle
+    </button>
+</div>
+<div class="datagrid-wrapper shadow-sm">
+    <table class="table table-hover table-sm">
+        <thead class="datagrid-header">
+            <tr>
+                <th style="width: 15%;">SKU</th>
+                <th style="width: 35%;">Ad</th>
+                <th style="width: 10%;" class="text-center">Stok</th>
+                <th style="width: 10%;">Birim</th>
+                <th style="width: 15%;" class="text-end">Satış Fiyatı</th>
+                <th style="width: 15%;" class="text-center">İşlemler</th>
+            </tr>
+            <tr class="datagrid-filter-row">
+                <td><input type="text" class="form-control form-control-sm" data-filter-key="sku" placeholder="SKU Ara..."></td>
+                <td><input type="text" class="form-control form-control-sm" data-filter-key="name" placeholder="Ad Ara..."></td>
+                <td></td><td></td><td></td><td></td>
+            </tr>
+        </thead>
+        <tbody id="product-table-body"></tbody>
+    </table>
+</div>
+<div class="datagrid-footer">
+    <span id="total-records-info"></span>
+    <nav class="ms-auto"><ul class="pagination pagination-sm mb-0" id="pagination-container"></ul></nav>
+</div>
