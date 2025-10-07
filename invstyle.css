@@ -1,0 +1,212 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+
+}
+
+#main-container {
+    transition: all 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+
+#branding-section {
+    background: linear-gradient(-45deg, #430d4b, #2e1040, #191654, #211d64);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    padding: 2rem;
+    position: relative;
+    transition: all 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    flex-shrink: 0;
+}
+
+.branding-content { text-align: center; max-width: 500px; }
+.logo { width: 150px; transition: transform 0.3s ease, filter 0.3s ease; cursor: pointer; }
+.logo:hover { transform: scale(1.1); filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.4)); }
+
+
+.main-headline {
+    transition: all 0.4s ease; 
+}
+.default-text-content {
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.default-features {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    opacity: 0.8;
+}
+.expanded-text-content {
+    opacity: 0;
+    transform: translateY(20px);
+    height: 0; 
+    overflow: hidden; 
+    transition: all 0.5s ease 0.2s; 
+}
+.separator { width: 80px; height: 3px; background-color: white; margin: 1.5rem auto; border-radius: 2px; }
+.slogan { font-size: 1.2rem; font-weight: 600; }
+.description { font-size: 1rem; font-weight: 400; opacity: 0.9; }
+.features { font-size: 0.9rem; font-weight: 500; opacity: 0.8; }
+.btn-start-trial { background-color: rgba(255, 255, 255, 0.15); border: 1px solid white; color: white; padding: 0.8rem 1.5rem; border-radius: 50px; font-weight: 600; transition: all 0.3s ease; }
+.btn-start-trial:hover { background-color: white; color: #430d4b; }
+
+
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+#login-panel {  display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.6s ease;
+    flex-grow: 1; }
+.login-form-wrapper { width: 100%; }
+.login-form-container { width: 100%;
+    max-width: 450px;
+    margin: auto;
+    padding: 2.5rem;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3); }
+.form-title { font-weight: 700;
+    color: #ffffff; 
+    white-space: nowrap; }
+.form-label { font-weight: 500;
+    color: #ffffff; }
+.form-control { padding: 0.9rem 1rem; border-radius: 0.5rem; border: 1px solid #ced4da; }
+.form-control:focus { border-color: #6d1a99; box-shadow: 0 0 0 0.25rem rgba(109, 26, 153, 0.25); }
+
+.form-check-label {
+    font-size: 0.9rem;
+    color: #495057;
+}
+.form-check-input:checked {
+    background-color: #6d1a99;
+    border-color: #6d1a99;
+}
+.form-check-label, .forgot-password-link {
+    font-size: 0.9rem;
+    color: #ffffff; 
+}
+.forgot-password-link {
+    text-decoration: none;
+    color: #ffffff; 
+    font-weight: 500;
+}
+
+.forgot-password-link:hover {
+    text-decoration: underline;
+    color: #cccccc; 
+}
+.btn-login {
+    background: linear-gradient(to right, #6d1a99, #4a1c92);
+    border: none; padding: 0.9rem 1.5rem; font-weight: 600; border-radius: 0.5rem;
+    transition: all 0.3s ease;
+}
+.btn-login:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+
+
+#exit-fullscreen-handle { position: fixed; top: 50%; right: 0; transform: translateY(-50%); width: 40px; height: 100px; background-color: rgba(255, 255, 255, 0.1); color: white; display: none; align-items: center; justify-content: center; font-size: 1.5rem; cursor: pointer; border-radius: 10px 0 0 10px; opacity: 0.5; transition: all 0.3s ease; }
+#exit-fullscreen-handle:hover { background-color: rgba(255, 255, 255, 0.3); opacity: 1; }
+body.fullscreen-view #branding-section { width: 100vw !important; }
+body.fullscreen-view #login-panel { width: 0 !important; opacity: 0; padding: 0; flex-grow: 0; }
+
+body.fullscreen-view #branding-section .main-headline {
+    transform: translateY(-20px);
+}
+
+
+body.fullscreen-view #branding-section .default-text-content {
+    opacity: 0;
+    transform: scale(0.9);
+    height: 0; 
+}
+body.fullscreen-view #branding-section .expanded-text-content {
+    opacity: 1;
+    transform: translateY(0);
+    height: auto; 
+}
+
+body.fullscreen-view #exit-fullscreen-handle { display: flex; }
+
+
+#copyright-notice { text-align: center;
+    margin-top: 2rem;
+    color: #ffffff; 
+    font-size: 0.85rem;
+    opacity: 0.7; }
+#contact-us-link { position: fixed; bottom: 20px; right: 25px; color: #343a40; font-weight: 500; font-size: 0.9rem; text-decoration: none; background-color: rgba(255, 255, 255, 0.7); padding: 8px 15px; border-radius: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); transition: all 0.3s ease; }
+#contact-us-link:hover { color: #000; background-color: white; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transform: translateY(-2px); }
+
+#background-slideshow {
+    position: fixed; 
+    width: 100vw;    
+    height: 100vh;   
+    top: 0;
+    left: 0;
+    z-index: -1; 
+    background-color: #191654; 
+}
+
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover; 
+    background-position: center center;
+    opacity: 0; 
+    animation: imageAnimation 25s linear infinite; 
+}
+
+
+.slide:nth-child(2) { animation-delay: 5s; }
+.slide:nth-child(3) { animation-delay: 10s; }
+.slide:nth-child(4) { animation-delay: 15s; }
+.slide:nth-child(5) { animation-delay: 20s; }
+
+.modal-backdrop {
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+
+.modal-content {
+    background-color: rgba(255, 255, 255, 0.9); 
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+
+.modal-header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+
+.modal-footer {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+
+.modal-footer .btn-primary {
+    background: linear-gradient(to right, #6d1a99, #4a1c92);
+    border: none;
+}
+
+
+@keyframes imageAnimation { 
+    0% { opacity: 0; }
+    8% { opacity: 1; transform: scale(1.05); } /* Resim %8'lik sürede yavaşça belirir ve hafifçe büyür */
+    20% { opacity: 1; transform: scale(1.05); } /* Bir süre görünür kalır */
+    28% { opacity: 0; transform: scale(1); }    /* Sonra yavaşça kaybolur ve orijinal boyutuna döner */
+    100% { opacity: 0; }
+}

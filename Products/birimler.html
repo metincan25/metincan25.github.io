@@ -1,0 +1,42 @@
+<h3 class="m-0 page-title mb-4">Birim Yönetimi</h3>
+
+<div class="row">
+    <div class="col-md-7">
+        <div class="card shadow-sm">
+            <div class="card-header py-2"><h6 class="m-0 fw-bold text-primary">Mevcut Birimler</h6></div>
+            <div class="card-body">
+                <div class="list-group" id="unit-list">
+                    <div class="text-center p-4"><div class="spinner-border spinner-border-sm"></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-5">
+        <div class="card shadow-sm">
+             <div class="card-header py-2"><h6 class="m-0 fw-bold text-primary">Yeni Birim Ekle</h6></div>
+            <div class="card-body">
+                <form id="unit-form">
+                    <div class="row">
+                        <div class="col-md-8 mb-3">
+                            <label for="unit-name" class="form-label form-label-sm">Birim Adı <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control form-control-sm" id="unit-name" placeholder="Örn: Adet, Kilogram" required>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="unit-symbol" class="form-label form-label-sm">Sembol <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control form-control-sm" id="unit-symbol" placeholder="Örn: adt, kg" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                         <label for="unit-description" class="form-label form-label-sm">Açıklama</label>
+                        <textarea class="form-control form-control-sm" id="unit-description" rows="2"></textarea>
+                    </div>
+                    <div id="form-message-area"></div>
+                    <button type="submit" class="btn btn-sm btn-primary w-100">
+                        <i class="fas fa-plus me-2"></i>Ekle
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h3 class="m-0 page-title">Satış Faturaları</h3>
+</div>
+
+<div class="table-responsive shadow-sm rounded">
+    <table class="table table-hover align-middle mb-0">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col" style="width: 25%;">Fatura No</th>
+                <th scope="col" style="width: 20%;">Fatura Tarihi</th>
+                <th scope="col" style="width: 25%;">Müşteri Adı</th>
+                <th scope="col" class="text-end" style="width: 15%;">Tutar</th>
+                <th scope="col" class="text-center" style="width: 15%;">Durum</th>
+            </tr>
+            <tr class="table-light">
+                <td><input type="text" class="form-control form-control-sm filter-input" data-filterkey="invoiceNumber" placeholder="Fatura No Ara..."></td>
+                <td>
+                     <div class="d-flex gap-2">
+                        <input type="date" class="form-control form-control-sm filter-input" data-filterkey="startDate" title="Başlangıç Tarihi">
+                        <input type="date" class="form-control form-control-sm filter-input" data-filterkey="endDate" title="Bitiş Tarihi">
+                    </div>
+                </td>
+                <td><input type="text" class="form-control form-control-sm filter-input" data-filterkey="customerName" placeholder="Müşteri Adı Ara..."></td>
+                <td></td> <td>
+                    <select class="form-select form-select-sm filter-input" data-filterkey="status">
+                        <option value="">Tümü</option>
+                        <option value="Ödenecek">Ödenecek</option>
+                        <option value="Ödendi">Ödendi</option>
+                    </select>
+                </td>
+            </tr>
+        </thead>
+        <tbody id="invoices-table-body">
+            </tbody>
+    </table>
+</div>

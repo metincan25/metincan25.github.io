@@ -1,0 +1,26 @@
+<h3 class="m-0 page-title mb-4">Alış İrsaliyeleri</h3>
+
+<div class="table-responsive shadow-sm rounded">
+    <table class="table table-hover align-middle mb-0">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col" style="width: 25%;">İrsaliye No</th>
+                <th scope="col" style="width: 20%;">Geliş Tarihi</th>
+                <th scope="col" style="width: 25%;">İlgili Sipariş No</th>
+                <th scope="col" class="text-center" style="width: 10%;">İşlemler</th>
+            </tr>
+            <tr class="table-light">
+                <td><input type="text" class="form-control form-control-sm filter-input" data-filterkey="waybillNumber" placeholder="İrsaliye No Ara..."></td>
+                <td>
+                    <div class="d-flex gap-2">
+                        <input type="date" class="form-control form-control-sm filter-input" data-filterkey="startDate" title="Başlangıç Tarihi">
+                        <input type="date" class="form-control form-control-sm filter-input" data-filterkey="endDate" title="Bitiş Tarihi">
+                    </div>
+                </td>
+                <td><input type="text" class="form-control form-control-sm filter-input" data-filterkey="orderNumber" placeholder="Sipariş No Ara..."></td>
+                <td></td> </tr>
+        </thead>
+        <tbody id="purchase-waybills-table-body">
+            </tbody>
+    </table>
+</div>

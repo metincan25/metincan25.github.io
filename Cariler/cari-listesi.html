@@ -1,0 +1,36 @@
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h3 class="m-0 page-title">Cari Yönetimi</h3>
+    <button class="btn btn-primary btn-sm" id="open-new-cari-tab">
+        <i class="fas fa-plus me-1"></i>Yeni Cari Ekle
+    </button>
+</div>
+
+<div class="datagrid-wrapper shadow-sm">
+    <table class="table table-hover table-sm">
+        <thead class="datagrid-header">
+            <tr>
+                <th style="width: 15%;">Cari Kodu</th>
+                <th style="width: 30%;">Unvan / Firma Adı</th>
+                <th style="width: 15%;">Cari Tipi</th>
+                <th style="width: 15%;">Telefon</th>
+                <th style="width: 15%;">E-posta</th>
+                <th style="width: 10%;" class="text-center">İşlemler</th>
+            </tr>
+            <tr class="datagrid-filter-row">
+                <td><input type="text" class="form-control form-control-sm" data-filter-key="cariKodu" placeholder="Koda göre ara..."></td>
+                <td><input type="text" class="form-control form-control-sm" data-filter-key="unvan" placeholder="Unvana göre ara..."></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody id="cariler-table-body">
+            </tbody>
+    </table>
+</div>
+
+<div class="datagrid-footer">
+    <span id="total-records-info-cari"></span>
+    <nav class="ms-auto"><ul class="pagination pagination-sm mb-0" id="pagination-container-cari"></ul></nav>
+</div>

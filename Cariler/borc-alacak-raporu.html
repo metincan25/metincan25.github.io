@@ -1,0 +1,33 @@
+<h3 class="m-0 page-title mb-4">Borç - Alacak Durum Raporu</h3>
+
+<div class="row mb-4">
+    <div class="col-md-6">
+        <div class="card card-body bg-success text-white">
+            <div class="fw-bold">TOPLAM ALACAK (Müşterilerden)</div>
+            <h3 id="total-receivables">0.00 ₺</h3>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card card-body bg-danger text-white">
+            <div class="fw-bold">TOPLAM BORÇ (Tedarikçilere)</div>
+            <h3 id="total-payables">0.00 ₺</h3>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <h5>Müşteri Alacakları</h5>
+        <div class="table-responsive shadow-sm rounded"><table class="table table-sm table-hover mb-0">
+            <thead class="table-dark"><tr><th>Müşteri</th><th class="text-end">Alacak Tutarı</th></tr></thead>
+            <tbody id="receivables-table-body"></tbody>
+        </table></div>
+    </div>
+    <div class="col-md-6">
+        <h5>Tedarikçi Borçları</h5>
+        <div class="table-responsive shadow-sm rounded"><table class="table table-sm table-hover mb-0">
+            <thead class="table-dark"><tr><th>Tedarikçi</th><th class="text-end">Borç Tutarı</th></tr></thead>
+            <tbody id="payables-table-body"></tbody>
+        </table></div>
+    </div>
+</div>
