@@ -6,6 +6,7 @@
 # Bağımlılıklar klasörü (npm veya yarn ile indirilir)
 node_modules/
 
+
 # Visual Studio ve .NET derleme artıkları
 bin/
 obj/
