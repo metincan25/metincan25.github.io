@@ -1,0 +1,47 @@
+<h3 class="m-0 page-title mb-4">Sipariş Hareketleri (Satış & Alış)</h3>
+
+<div class="card shadow-sm mb-4">
+    <div class="card-body">
+        <form id="order-activities-filter-form" class="row g-3 align-items-end">
+            <div class="col-md-3">
+                <label for="filter-doc-number" class="form-label form-label-sm">Belge Numarası</label>
+                <input type="text" class="form-control form-control-sm" id="filter-doc-number" placeholder="Sipariş No Ara...">
+            </div>
+            <div class="col-md-2">
+                <label for="filter-activity-type" class="form-label form-label-sm">Hareket Tipi</label>
+                <select id="filter-activity-type" class="form-select form-select-sm">
+                    <option value="" selected>Tümü</option>
+                    <option value="Satış Siparişi">Satış Siparişi</option>
+                    <option value="Satın Alma Siparişi">Satın Alma Siparişi</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <label for="filter-start-date" class="form-label form-label-sm">Başlangıç Tarihi</label>
+                <input type="date" class="form-control form-control-sm" id="filter-start-date">
+            </div>
+            <div class="col-md-2">
+                <label for="filter-end-date" class="form-label form-label-sm">Bitiş Tarihi</label>
+                <input type="date" class="form-control form-control-sm" id="filter-end-date">
+            </div>
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-primary btn-sm w-100"><i class="fas fa-filter me-1"></i> Filtrele</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="table-responsive shadow-sm rounded">
+    <table class="table table-sm table-hover align-middle">
+        <thead class="table-dark">
+            <tr>
+                <th>Tarih</th>
+                <th>Hareket Tipi</th>
+                <th>Belge No</th>
+                <th>Cari Adı</th>
+                <th class="text-center">Durum</th>
+                <th class="text-end">Tutar</th>
+            </tr>
+        </thead>
+        <tbody id="order-activities-table-body"></tbody>
+    </table>
+</div>

@@ -1,0 +1,16 @@
+<h3 class="m-0 page-title mb-4">Kasa & Banka Hareketleri</h3>
+<div class="card shadow-sm mb-4"><div class="card-body">
+    <div class="row align-items-end">
+        <div class="col-md-4">
+            <label class="form-label form-label-sm">Hesap Seçimi</label>
+            <select id="account-select-filter" class="form-select"><option>Yükleniyor...</option></select>
+        </div>
+        <div class="col-md-8 text-end">
+            <h4>Güncel Bakiye: <span id="current-balance" class="fw-bold text-success">0.00 ₺</span></h4>
+        </div>
+    </div>
+</div></div>
+<div class="table-responsive shadow-sm rounded"><table class="table table-sm table-hover">
+    <thead class="table-dark"><tr><th>Tarih</th><th>Açıklama</th><th>Cari</th><th class="text-end">Giren Tutar</th><th class="text-end">Çıkan Tutar</th><th class="text-end">Bakiye</th></tr></thead>
+    <tbody id="account-statement-table-body"></tbody>
+</table></div>
